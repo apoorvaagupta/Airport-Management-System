@@ -1,0 +1,25 @@
+{
+  "name": "airport-management-system",
+  "version": "1.0.0",
+  "description": "A system to manage infrastructure, staff and flights of any airport.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apoorvaagupta/airport-management-system.git"
+  },
+  "author": "Apoorvaa Gupta <apoorvaagupta01@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apoorvaagupta/airport-management-system/issues"
+  },
+  "homepage": "https://github.com/apoorvaagupta/airport-management-system#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.37.6"
+  }
+}
