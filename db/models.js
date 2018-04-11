@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-
+const queries = require('./queries')
 // const DATABASE_URL = ('postgres://' + secret.DB_USER + ":" + secret.DB_PASSWORD + "@" + secret.DB_HOST + ":5432/" + secret.DATABASE);
 
 
