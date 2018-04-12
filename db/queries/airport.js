@@ -1,15 +1,17 @@
+// noinspection JSAnnotator
 const createTable = `
   CREATE TABLE IF NOT EXISTS airport(
-    airport_code int check(airport_code > 0),
-    name varchar(100) NOT NULL,
-    city varchar(30) NOT NULL,
-    country varchar(30) NOT NULL,
-    contact_no int NOT NULL,
-    email varchar(50) NOT NULL,
+    airport_code  char(3)       CONSTRAINT valid_IATA_airport_code CHECK(airport_code ~ '^[A-Z]+$'),
+    name          varchar(100)  NOT NULL,
+    city          varchar(30)   NOT NULL,
+    country       varchar(30)   NOT NULL,
+    contact_no    varchar(16)   NOT NULL,
+    email         varchar(50)   NOT NULL,
     PRIMARY KEY (airport_code) 
   );
 `
 
+// noinspection JSAnnotator
 const dropTable = `
   DROP TABLE IF EXISTS airport;
 `
