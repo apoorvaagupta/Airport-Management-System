@@ -4,7 +4,7 @@ const db = require('../db/models');
 
 route.post('/add', function (req, res) {
 
-  db.query(`INSERT INTO airlines values(${req.body.airline_code},'${req.body.name}')`).then((data) => {
+  db.query(`INSERT INTO airlines values('${req.body.airline_code}','${req.body.name}')`).then((data) => {
     console.log(data)
     res.send("Airlines added");
   }).catch((err) => {

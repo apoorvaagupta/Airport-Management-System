@@ -4,7 +4,7 @@ const db = require('../db/models');
 
 route.post('/add', function (req, res) {
 
-  db.query(`INSERT INTO terminals values(${req.body.terminal_id},'${req.body.name}')`).then((data) => {
+  db.query(`INSERT INTO terminals values('${req.body.terminal_id}','${req.body.name}')`).then((data) => {
     console.log(data)
     res.send("Terminal added");
   }).catch((err) => {
