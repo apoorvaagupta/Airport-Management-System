@@ -6,7 +6,6 @@ const createTable = `
     city          varchar(30)   NOT NULL,
     country       varchar(30)   NOT NULL,
     contact_no    varchar(16)   NOT NULL,
-    email         varchar(50)   NOT NULL,
     PRIMARY KEY (airport_code) 
   );
 `
