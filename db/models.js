@@ -12,7 +12,7 @@ const db = new Sequelize(
     host: 'localhost'
   });
 
-db.sync().then(() => console.log("Database Ready"))
+db.sync({alter: true}).then(() => console.log("Database Ready"))
 
 module.exports = {
   db: db
