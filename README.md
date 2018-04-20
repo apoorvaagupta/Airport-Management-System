@@ -1,6 +1,6 @@
 # Airport Management System
 
-***A system to manage the infrastructure, staff and flights of an airport***
+***A system to manage the infrastructure and flights of an airport***
 
 ## Development
 
@@ -14,7 +14,7 @@ npm install
 ```  
 
 ### Setting up the database
-> Make sure o have postgres installed(postgresql 96 preferable) and the server is started
+> Make sure to have postgres installed(postgresql 96 preferable) and the server is started
 
 ```bash
 psql
