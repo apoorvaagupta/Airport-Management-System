@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Airport Management System</title>
+    <link rel="stylesheet" href="./../css/bootstrap.css">
+    <link rel="stylesheet" href="./../css/style.css">
+
+    <script src="./../js/jquery.js"></script>
+    <script src="./../js/bootstrap.js"></script>
+    <script type="text/javascript" src="./../admin/js/terminals.js"></script>
+
+</head>
+<body>
+
+<div class="modal fade" id="addTerminalsModal" tabindex="-1" role="dialog" aria-labelledby="Add Terminals Modal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header"
+                 style="border: none; background-color: #02B3E4; counter-reset: white; border-top-left-radius: .25rem; border-top-right-radius: .25rem">
+                <h5 class="modal-title text-center" style="margin: 0 auto; font-size: 18px; color: white">Add Terminals</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0">
+                    <span aria-hidden="true" style="color: white">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" style="margin-bottom: 0" id="addTerminalsForm">
+                    <label class="mr-2" for="terminalId" style="color: #777; font-size: 1rem; display: inline-block">Terminal ID: </label>
+                    <input id="terminalId" required type="text" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+                    <label class="mr-2" for="terminalName" style="color: #777; font-size: 1rem; display: inline-block">Terminal Name: </label>
+                    <input id="terminalName" required type="text" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+
+                </div>
+            </div>
+            <p class="text-center" style="color: red;" id="addTerminalsError"></p>
+            <div class="modal-footer" style="border: none; justify-content: center; padding-top: 5px">
+                <button id="terminalsSubmit" class=" btn btn-success"
+                        style="padding: 5px 15px;font-size: 14px; border-radius: 0.25rem; cursor: pointer;">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editTerminalsModal" tabindex="-1" role="dialog" aria-labelledby="Edit Terminals Modal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header"
+                 style="border: none; background-color: #02B3E4; counter-reset: white; border-top-left-radius: .25rem; border-top-right-radius: .25rem">
+                <h5 class="modal-title text-center" style="margin: 0 auto; font-size: 18px; color: white">Edit Terminals</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0">
+                    <span aria-hidden="true" style="color: white">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" style="margin-bottom: 0" id="editTerminalsForm">
+                    <label class="mr-2" for="terminalId" style="color: #777; font-size: 1rem; display: inline-block">Terminal ID: </label>
+                    <input id="editTerminalId" required type="text" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+                    <label class="mr-2" for="terminalName" style="color: #777; font-size: 1rem; display: inline-block">Terminal Name: </label>
+                    <input id="editTerminalName" required type="text" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+
+                </div>
+            </div>
+            <p class="text-center" style="color: red;" id="editTerminalsError"></p>
+            <div class="modal-footer" style="border: none; justify-content: center; padding-top: 5px">
+                <button id="editTerminalsSubmit" class=" btn btn-success"
+                        style="padding: 5px 15px;font-size: 14px; border-radius: 0.25rem; cursor: pointer;">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row" style="padding: 20px; padding-bottom: 0">
+        <div class="col text-center text-capitalize">
+            <h1>Airport Management System</h1>
+        </div>
+    </div>
+    <hr style="margin-top: 0">
+    <div class="row" style="padding-top: 20px">
+        <div class="col-auto">
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/flights">Flights
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/airlines">
+                Airlines
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/airplanes">Airplanes
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/airports">Airports
+            </a>
+            <br>
+            <a class="btn btn-outline-success active" style="width: 170px; border-radius: 2rem; margin: 5px" href="/terminals">Terminals
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/runways">Runways
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/gates">Gates
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/checkinrows">Check In
+                Rows
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/baggagecounters">Baggage
+                Counters
+            </a>
+            <br>
+
+        </div>
+        <div class="col">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <h1 style="margin: 0" id="title">Terminals</h1>
+                    </div>
+                    <div class="col-sm-3 mt-auto mb-auto">
+                        <button class=" btn btn-success" data-toggle="modal" data-target="#addTerminalsModal"
+                                style="padding: 5px 15px;font-size: 14px; border-radius: 0.25rem; cursor: pointer;">
+                            Add Terminals
+                        </button>
+                    </div>
+                </div>
+                <div class="row" style="padding: 30px">
+
+                    <ul id="terminals-list" class="list-group" style="width: 100%">
+                        <li class="list-group-item">
+                            <div class="row text-center">
+                                <div class="col"><b>Terminal ID</b></div>
+                                <div class="col"><b>Terminal Name</b></div>
+                                <div class="col-2">
+                                    <b>Edit/Delete</b>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row text-center">
+                                <div class="col">T-3</div>
+                                <div class="col">Terminal 3</div>
+                                <div class="col-2">E/X</div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
