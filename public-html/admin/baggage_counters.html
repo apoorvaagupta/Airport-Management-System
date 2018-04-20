@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Airport Management System</title>
+    <link rel="stylesheet" href="./../css/bootstrap.css">
+    <link rel="stylesheet" href="./../css/style.css">
+
+    <script src="./../js/jquery.js"></script>
+    <script src="./../js/bootstrap.js"></script>
+    <script type="text/javascript" src="./../admin/js/baggagecounters.js"></script>
+
+</head>
+<body>
+
+<div class="modal fade" id="addCountersModal" tabindex="-1" role="dialog" aria-labelledby="Add Counters Modal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header"
+                 style="border: none; background-color: #02B3E4; counter-reset: white; border-top-left-radius: .25rem; border-top-right-radius: .25rem">
+                <h5 class="modal-title text-center" style="margin: 0 auto; font-size: 18px; color: white">Add Baggage Counters</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0">
+                    <span aria-hidden="true" style="color: white">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" style="margin-bottom: 0" id="addCountersForm">
+                    <label class="mr-2" for="terminalsList" style="color: #777; font-size: 1rem; display: inline-block">Terminal ID: </label>
+                    <select id="terminalsList" class="custom-select mb-2">
+                        <option>T-1</option>
+                        <option>T-2</option>
+                        <option>T-3</option>
+                        <option>T-4</option>
+                    </select><br>
+                    <label class="mr-2" for="counterId" style="color: #777; font-size: 1rem; display: inline-block">Baggage Counter ID: </label>
+                    <input id="counterId" required type="text" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+                    <label class="mr-2" for="counterCapacity" style="color: #777; font-size: 1rem; display: inline-block">Capacity: </label>
+                    <input id="counterCapacity" required type="number" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+
+                </div>
+            </div>
+            <p class="text-center" style="color: red;" id="addCountersError"></p>
+            <div class="modal-footer" style="border: none; justify-content: center; padding-top: 5px">
+                <button id="counterSubmit" class=" btn btn-success"
+                        style="padding: 5px 15px;font-size: 14px; border-radius: 0.25rem; cursor: pointer;">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editGatesModal" tabindex="-1" role="dialog" aria-labelledby="Edit Gates Modal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header"
+                 style="border: none; background-color: #02B3E4; counter-reset: white; border-top-left-radius: .25rem; border-top-right-radius: .25rem">
+                <h5 class="modal-title text-center" style="margin: 0 auto; font-size: 18px; color: white">Edit Gates</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0">
+                    <span aria-hidden="true" style="color: white">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" style="margin-bottom: 0" id="editGatesForm">
+                    <label class="mr-2" for="editterminalsList" style="color: #777; font-size: 1rem; display: inline-block">Terminal ID: </label>
+                    <select id="editterminalsList" class="custom-select mb-2">
+                        <option>T-1</option>
+                        <option>T-2</option>
+                        <option>T-3</option>
+                        <option>T-4</option>
+                    </select><br>
+                    <label class="mr-2" for="editRunwayId" style="color: #777; font-size: 1rem; display: inline-block">Gate ID: </label>
+                    <input id="editRunwayId" required type="text" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+                    <label class="mr-2" for="editRunwayWeight" style="color: #777; font-size: 1rem; display: inline-block">Capacity: </label>
+                    <input id="editRunwayWeight" required type="number" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+
+                </div>
+            </div>
+            <p class="text-center" style="color: red;" id="editGatesError"></p>
+            <div class="modal-footer" style="border: none; justify-content: center; padding-top: 5px">
+                <button id="editGateSubmit" class=" btn btn-success"
+                        style="padding: 5px 15px;font-size: 14px; border-radius: 0.25rem; cursor: pointer;">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row" style="padding: 20px; padding-bottom: 0">
+        <div class="col text-center text-capitalize">
+            <h1>Airport Management System</h1>
+        </div>
+    </div>
+    <hr style="margin-top: 0">
+    <div class="row" style="padding-top: 20px">
+        <div class="col-auto">
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/flights">Flights
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/airlines">
+                Airlines
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/airplanes">Airplanes
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/airports">Airports
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/terminals">Terminals
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/runways">Runways
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/gates">Gates
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/checkinrows">Check In
+                Rows
+            </a>
+            <br>
+            <a class="btn btn-outline-success active" style="width: 170px; border-radius: 2rem; margin: 5px" href="/baggagecounters">Baggage
+                Counters
+            </a>
+            <br>
+
+        </div>
+        <div class="col">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <h1 style="margin: 0" id="title">Baggage Counters</h1>
+                    </div>
+                    <div class="col-sm-3 mt-auto mb-auto">
+                        <button class=" btn btn-success" data-toggle="modal" data-target="#addCountersModal"
+                                style="padding: 5px 15px;font-size: 14px; border-radius: 0.25rem; cursor: pointer;">
+                            Add Baggage Counters
+                        </button>
+                    </div>
+                </div>
+                <div class="row" style="padding: 30px">
+
+                    <ul id="counters-list" class="list-group" style="width: 100%">
+                        <li class="list-group-item">
+                            <div class="row text-center">
+                                <div class="col"><b>Terminal ID</b></div>
+                                <div class="col"><b>Baggage Counter ID</b></div>
+                                <div class="col"><b>Capacity</b></div>
+                                <div class="col-2">
+                                    <b>Edit/Delete</b>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row text-center">
+                                <div class="col">T-3</div>
+                                <div class="col">B-1</div>
+                                <div class="col">2500</div>
+                                <div class="col-2">E/X</div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
