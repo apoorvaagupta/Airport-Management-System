@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Airport Management System</title>
+    <link rel="stylesheet" href="./../css/bootstrap.css">
+    <link rel="stylesheet" href="./../css/style.css">
+
+    <script src="./../js/jquery.js"></script>
+    <script src="./../js/bootstrap.js"></script>
+    <script type="text/javascript" src="./../admin/js/airports.js"></script>
+
+</head>
+<body>
+
+<div class="modal fade" id="addAirportsModal" tabindex="-1" role="dialog" aria-labelledby="Add Airports Modal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header"
+                 style="border: none; background-color: #02B3E4; counter-reset: white; border-top-left-radius: .25rem; border-top-right-radius: .25rem">
+                <h5 class="modal-title text-center" style="margin: 0 auto; font-size: 18px; color: white">Add Airports</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0">
+                    <span aria-hidden="true" style="color: white">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" style="margin-bottom: 0" id="addAirportsForm">
+                    <label class="mr-2" for="airportCode" style="color: #777; font-size: 1rem; display: inline-block">Airport Code: </label>
+                    <input id="airportCode" required type="text" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+                    <label class="mr-2" for="airportName" style="color: #777; font-size: 1rem; display: inline-block">Airport Name: </label>
+                    <input id="airportName" required type="text" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+                    <label class="mr-2" for="airportCity" style="color: #777; font-size: 1rem; display: inline-block">City: </label>
+                    <input id="airportCity" required type="text" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+                    <label class="mr-2" for="airportCountry" style="color: #777; font-size: 1rem; display: inline-block">Country: </label>
+                    <input id="airportCountry" required type="text" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+                    <label class="mr-2" for="airportContact" style="color: #777; font-size: 1rem; display: inline-block">Contact Number: </label>
+                    <input id="airportContact" required type="text" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+
+                </div>
+            </div>
+            <p class="text-center" style="color: red;" id="addAirportsError"></p>
+            <div class="modal-footer" style="border: none; justify-content: center; padding-top: 5px">
+                <button id="airportSubmit" class=" btn btn-success"
+                        style="padding: 5px 15px;font-size: 14px; border-radius: 0.25rem; cursor: pointer;">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editAirportsModal" tabindex="-1" role="dialog" aria-labelledby="Edit Airports Modal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header"
+                 style="border: none; background-color: #02B3E4; counter-reset: white; border-top-left-radius: .25rem; border-top-right-radius: .25rem">
+                <h5 class="modal-title text-center" style="margin: 0 auto; font-size: 18px; color: white">Edit Airports</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0">
+                    <span aria-hidden="true" style="color: white">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" style="margin-bottom: 0" id="editAirportsForm">
+                    <label class="mr-2" for="editAirportCode" style="color: #777; font-size: 1rem; display: inline-block">Airport Code: </label>
+                    <input id="editAirportCode" required type="text" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+                    <label class="mr-2" for="editAirportName" style="color: #777; font-size: 1rem; display: inline-block">Airport Name: </label>
+                    <input id="editAirportName" required type="text" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+                    <label class="mr-2" for="editAirportCity" style="color: #777; font-size: 1rem; display: inline-block">City: </label>
+                    <input id="editAirportCity" required type="text" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+                    <label class="mr-2" for="editAirportCountry" style="color: #777; font-size: 1rem; display: inline-block">Country: </label>
+                    <input id="editAirportCountry" required type="number" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+                    <label class="mr-2" for="editAirportContact" style="color: #777; font-size: 1rem; display: inline-block">Contact Number: </label>
+                    <input id="editAirportContact" required type="number" class="form-control input"
+                           style="margin-bottom: 15px"><br>
+
+                </div>
+            </div>
+            <p class="text-center" style="color: red;" id="editAirportsError"></p>
+            <div class="modal-footer" style="border: none; justify-content: center; padding-top: 5px">
+                <button id="editAirportSubmit" class=" btn btn-success"
+                        style="padding: 5px 15px;font-size: 14px; border-radius: 0.25rem; cursor: pointer;">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row" style="padding: 20px; padding-bottom: 0">
+        <div class="col text-center text-capitalize">
+            <h1>Airport Management System</h1>
+        </div>
+    </div>
+    <hr style="margin-top: 0">
+    <div class="row" style="padding-top: 20px">
+        <div class="col-auto">
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/flights">Flights
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/airlines">
+                Airlines
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/airplanes">Airplanes
+            </a>
+            <br>
+            <a class="btn btn-outline-success active" style="width: 170px; border-radius: 2rem; margin: 5px" href="/airports">Airports
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/terminals">Terminals
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/runways">Runways
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/gates">Gates
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/checkinrows">Check In
+                Rows
+            </a>
+            <br>
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/baggagecounters">Baggage
+                Counters
+            </a>
+            <br>
+
+        </div>
+        <div class="col">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <h1 style="margin: 0" id="title">Airports</h1>
+                    </div>
+                    <div class="col-sm-3 mt-auto mb-auto">
+                        <button class=" btn btn-success" data-toggle="modal" data-target="#addAirportsModal"
+                                style="padding: 5px 15px;font-size: 14px; border-radius: 0.25rem; cursor: pointer;">
+                            Add Airports
+                        </button>
+                    </div>
+                </div>
+                <div class="row" style="padding: 30px">
+
+                    <ul id="airports-list" class="list-group" style="width: 100%">
+                        <li class="list-group-item">
+                            <div class="row text-center">
+                                <div class="col-1"><b>Airport Code</b></div>
+                                <div class="col-4"><b>Airport Name</b></div>
+                                <div class="col-2"><b>City</b></div>
+                                <div class="col-2"><b>Country</b></div>
+                                <div class="col-2"><b>Contact No.</b></div>
+                                <div class="col-1">
+                                    <b>E/D</b>
+                                </div>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
