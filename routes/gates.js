@@ -21,5 +21,14 @@ route.get('/viewAll', (req, res) => {
     })
 });
 
+route.get('/getAll', (req, res) => {
+
+    db.query("SELECT * FROM gates WHERE terminal_id='"+req.query.terminal_id+"';").then((gates) => {
+        console.log(gates);
+        res.send(gates[0]);
+    })
+});
+
+
 
 module.exports = route;
