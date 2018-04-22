@@ -15,7 +15,7 @@ route.post('/add', function (req, res) {
 
 
 route.get('/viewAll', (req, res) => {
-  db.query("SELECT * FROM terminals;").then((terminals) => {
+  db.query("SELECT * FROM terminals ORDER BY terminal_id;").then((terminals) => {
     console.log(terminals)
     res.send(terminals[0])
   })
