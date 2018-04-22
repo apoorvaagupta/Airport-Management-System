@@ -140,7 +140,7 @@ $(document).ready(function () {
     let airportCountry = $('#airportCountry').val();
     let airportContact = $('#airportContact').val();
 
-    if (!airportCode || !airportName || !airportCity || ! airportCountry || !airportContact ) {
+    if (!airportCode || !airportName || !airportCity || !airportCountry || !airportContact) {
 
       $('#addAirportsError').text('Please Enter All The Details');
 
