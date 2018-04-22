@@ -21,5 +21,13 @@ route.get('/viewAll', (req, res) => {
     })
 });
 
+route.get('/getAll', (req, res) => {
+
+    db.query("SELECT * FROM baggage_counters WHERE terminal_id='"+req.query.terminal_id+"';").then((runways) => {
+        console.log(runways);
+        res.send(runways[0]);
+    })
+});
+
 
 module.exports = route;

@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     for (let i = 0; i < airlines.length; i++) {
 
-    airlineslist.append(`<li class="list-group-item">
+      airlineslist.append(`<li class="list-group-item">
         <div class="row text-center">
         <div class="col-3">${airlines[i].airline_code}</div>
         <div class="col-6">${airlines[i].name}</div>
@@ -136,7 +136,7 @@ $(document).ready(function () {
     let airline_code = $('#airlinesCode').val();
     let name = $('#airlinesName').val();
 
-    if (!name || !airline_code ) {
+    if (!name || !airline_code) {
 
       $('#addAirlinesError').text('Please Enter All The Details');
 

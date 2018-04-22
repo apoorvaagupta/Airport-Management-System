@@ -140,7 +140,7 @@ $(document).ready(function () {
     let aircraftCapacity = $('#aircraftCapacity').val();
     let aircraftWeight = $('#aircraftWeight').val();
 
-    if (!aircraftregNo || !icaoCode || !aircraftName || ! aircraftCapacity || !aircraftWeight ) {
+    if (!aircraftregNo || !icaoCode || !aircraftName || !aircraftCapacity || !aircraftWeight) {
 
       $('#addAircraftError').text('Please Enter All The Details');
 

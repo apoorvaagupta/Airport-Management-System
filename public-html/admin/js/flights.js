@@ -59,6 +59,8 @@ $(document).ready(function () {
         })
         $('#terminalsList').change(function(){
 
+            var selected=$(this).val();
+
             $.get('/api/runways/getAll',{terminal_id : $(this).val()}, function (runways) {
 
                 let runwayslist = $('#runwaysList');
@@ -94,6 +96,30 @@ $(document).ready(function () {
                     console.log("HEY 4");
 
                 }
+
+            })
+
+            $.get('/api/baggage_counters/getAll',{terminal_id : selected}, function (counters) {
+                $.get('api/check_in_rows/getAll',{terminal_id : selected},function (rows) {
+                    let counterslist = $('#tempList');
+
+
+                    // console.log("HEY" + terminals[0].terminal_id);
+                    for(let j=0;j < rows.length; j++) {
+                        for (let i = 0; i < counters.length; i++) {
+
+                            counterslist.append($('<option>', {
+                                value: counters[i].counter_id + '/'+rows[j].row_id,
+                                text: counters[i].counter_id+'/'+rows[j].row_id
+                            }));
+
+                            console.log("HEY 4");
+
+                        }
+                    }
+
+                })
+
 
             })
 
