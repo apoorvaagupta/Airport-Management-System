@@ -61,10 +61,11 @@ $(document).ready(function () {
 
             var selected=$(this).val();
 
+
             $.get('/api/runways/getAll',{terminal_id : $(this).val()}, function (runways) {
 
                 let runwayslist = $('#runwaysList');
-
+                $('#runwaysList').find('option').remove();
 
                 // console.log("HEY" + terminals[0].terminal_id);
                 for (let i = 0; i < runways.length; i++) {
@@ -83,6 +84,7 @@ $(document).ready(function () {
             $.get('/api/gates/getAll',{terminal_id : $(this).val()}, function (gates) {
 
                 let gateslist = $('#gatesList');
+                $('#gatesList').find('option').remove();
 
 
                 // console.log("HEY" + terminals[0].terminal_id);
@@ -102,7 +104,7 @@ $(document).ready(function () {
             $.get('/api/baggage_counters/getAll',{terminal_id : selected}, function (counters) {
                 $.get('api/check_in_rows/getAll',{terminal_id : selected},function (rows) {
                     let counterslist = $('#tempList');
-
+                    $('#tempList').find('option').remove();
 
                     // console.log("HEY" + terminals[0].terminal_id);
                     for(let j=0;j < rows.length; j++) {
@@ -126,6 +128,70 @@ $(document).ready(function () {
 
 
         });
+
+
+
+
+        $.get('/api/runways/getAll',{terminal_id : "T-1"}, function (runways) {
+
+            let runwayslist = $('#runwaysList');
+            $('#runwaysList').find('option').remove();
+
+            // console.log("HEY" + terminals[0].terminal_id);
+            for (let i = 0; i < runways.length; i++) {
+
+                runwayslist.append($('<option>', {
+                    value: runways[i].runway_id,
+                    text: runways[i].runway_id
+                }))
+
+                console.log("HEY 4");
+
+            }
+
+        })
+
+        $.get('/api/gates/getAll',{terminal_id : "T-1"}, function (gates) {
+
+            let gateslist = $('#gatesList');
+            $('#gatesList').find('option').remove();
+
+
+            // console.log("HEY" + terminals[0].terminal_id);
+            for (let i = 0; i < gates.length; i++) {
+
+                gateslist.append($('<option>', {
+                    value: gates[i].gate_id,
+                    text: gates[i].gate_id
+                }))
+
+                console.log("HEY 4");
+
+            }
+
+        })
+
+        $.get('/api/baggage_counters/getAll',{terminal_id : "T-1"}, function (counters) {
+            $.get('api/check_in_rows/getAll', {terminal_id: "T-1"}, function (rows) {
+                let counterslist = $('#tempList');
+                $('#tempList').find('option').remove();
+
+                // console.log("HEY" + terminals[0].terminal_id);
+                for (let j = 0; j < rows.length; j++) {
+                    for (let i = 0; i < counters.length; i++) {
+
+                        counterslist.append($('<option>', {
+                            value: counters[i].counter_id + '/' + rows[j].row_id,
+                            text: counters[i].counter_id + '/' + rows[j].row_id
+                        }));
+
+                        console.log("HEY 4");
+
+                    }
+                }
+
+            })
+        })
 
 
 
@@ -273,6 +339,6 @@ $(document).ready(function () {
     //
     // })
 
-    
+
 
 })
