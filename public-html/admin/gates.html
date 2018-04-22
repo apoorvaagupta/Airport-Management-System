@@ -28,16 +28,13 @@
                 <div class="form-group" style="margin-bottom: 0" id="addGatesForm">
                     <label class="mr-2" for="terminalsList" style="color: #777; font-size: 1rem; display: inline-block">Terminal ID: </label>
                     <select id="terminalsList" class="custom-select mb-2">
-                        <option>T-1</option>
-                        <option>T-2</option>
-                        <option>T-3</option>
-                        <option>T-4</option>
+
                     </select><br>
-                    <label class="mr-2" for="runwayId" style="color: #777; font-size: 1rem; display: inline-block">Gate ID: </label>
-                    <input id="runwayId" required type="text" class="form-control input"
+                    <label class="mr-2" for="gateId" style="color: #777; font-size: 1rem; display: inline-block">Gate ID: </label>
+                    <input id="gateId" required type="text" class="form-control input"
                            style="margin-bottom: 15px"><br>
-                    <label class="mr-2" for="runwayWeight" style="color: #777; font-size: 1rem; display: inline-block">Capacity: </label>
-                    <input id="runwayWeight" required type="number" class="form-control input"
+                    <label class="mr-2" for="Capacity" style="color: #777; font-size: 1rem; display: inline-block">Capacity: </label>
+                    <input id="Capacity" required type="number" class="form-control input"
                            style="margin-bottom: 15px"><br>
 
                 </div>
@@ -142,7 +139,7 @@
                         <h1 style="margin: 0" id="title">Gates</h1>
                     </div>
                     <div class="col-sm-3 mt-auto mb-auto">
-                        <button class=" btn btn-success" data-toggle="modal" data-target="#addGatesModal"
+                        <button id="add_gate" class=" btn btn-success" data-toggle="modal" data-target="#addGatesModal"
                                 style="padding: 5px 15px;font-size: 14px; border-radius: 0.25rem; cursor: pointer;">
                             Add Gates
                         </button>
@@ -161,14 +158,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="list-group-item">
-                            <div class="row text-center">
-                                <div class="col">T-3</div>
-                                <div class="col">G-1</div>
-                                <div class="col">2500</div>
-                                <div class="col-2">E/X</div>
-                            </div>
-                        </li>
+                        
 
                     </ul>
                 </div>
