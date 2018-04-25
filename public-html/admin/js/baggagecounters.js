@@ -4,6 +4,9 @@ $(document).ready(function () {
     $.get('/api/terminals/viewAll', function (terminals) {
       let terminalslist = $('#terminalsList');
       for (let i = 0; i < terminals.length; i++) {
+
+          if (terminals[i].terminal_id === "1A" || terminals[i].terminal_id === "1D") continue;
+
         terminalslist.append($('<option>', {
           value: terminals[i].terminal_id,
           text: terminals[i].terminal_id

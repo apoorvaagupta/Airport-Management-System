@@ -5,8 +5,10 @@ $(document).ready(function () {
 
       let terminalslist = $('#terminalsList');
 
-      console.log("HEY" + terminals[0].terminal_id);
+      // console.log("HEY" + terminals[0].terminal_id);
       for (let i = 0; i < terminals.length; i++) {
+
+          if (terminals[i].terminal_id === "1" || terminals[i].terminal_id === "1C") continue;
 
         terminalslist.append($('<option>', {
           value: terminals[i].terminal_id,
