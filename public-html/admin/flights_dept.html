@@ -8,31 +8,31 @@
 
     <script src="./../js/jquery.js"></script>
     <script src="./../js/bootstrap.js"></script>
-    <script type="text/javascript" src="./../admin/js/flights.js"></script>
+    <script type="text/javascript" src="./../admin/js/flights_dept.js"></script>
 
 </head>
 <body>
 
-<div class="modal fade" id="addArrFlightsModal" tabindex="-1" role="dialog" aria-labelledby="Add Arrival Flights Modal"
+<div class="modal fade" id="addDeptFlightsModal" tabindex="-1" role="dialog" aria-labelledby="Add Departure Flights Modal"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header"
                  style="border: none; background-color: #02B3E4; counter-reset: white; border-top-left-radius: .25rem; border-top-right-radius: .25rem">
-                <h5 class="modal-title text-center" style="margin: 0 auto; font-size: 18px; color: white">Add Arrival Flight</h5>
+                <h5 class="modal-title text-center" style="margin: 0 auto; font-size: 18px; color: white">Add Departure Flight</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: 0">
                     <span aria-hidden="true" style="color: white">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="form-group" style="margin-bottom: 0" id="addArrFlightsForm">
+                <div class="form-group" style="margin-bottom: 0" id="addDeptFlightsForm">
                     <label class="mr-2" for="flightID" style="color: #777; font-size: 1rem; display: inline-block">Flight ID: </label>
                     <input id="flightID" required type="number" class="form-control input"
                            style="margin-bottom: 15px"><br>
                     <label class="mr-2" for="flightCode" style="color: #777; font-size: 1rem; display: inline-block">Flight Code: </label>
                     <input id="flightCode" required type="text" class="form-control input"
                            style="margin-bottom: 15px"><br>
-                    <label class="mr-2" for="airportsList" style="color: #777; font-size: 1rem; display: inline-block">Port of Departure: </label>
+                    <label class="mr-2" for="airportsList" style="color: #777; font-size: 1rem; display: inline-block">Port of Arrival: </label>
                     <select id="airportsList" class="custom-select mb-2">
 
                     </select><br>
@@ -56,37 +56,37 @@
                     <select id="gatesList" class="custom-select mb-2">
 
                     </select><br>
-                    <!--<label class="mr-2" for="depDate" style="color: #777; font-size: 1rem; display: inline-block">Departure-->
-                        <!--Date: </label>-->
-                    <!--<input type="date" placeholder="yyyy-mm-dd" required min="1962-01-01" id="depDate" class="form-control input"-->
-                           <!--style="display: inline-block; width: auto;margin-bottom: 15px"><br>-->
-
-                    <label class="mr-2" for="arrDate" style="color: #777; font-size: 1rem; display: inline-block">Arrival
+                    <label class="mr-2" for="depDate" style="color: #777; font-size: 1rem; display: inline-block">Departure
                         Date: </label>
-                    <input type="date" placeholder="yyyy-mm-dd" required min="1962-01-01" id="arrDate" class="form-control input"
+                    <input type="date" placeholder="yyyy-mm-dd" required min="1962-01-01" id="depDate" class="form-control input"
                            style="display: inline-block; width: auto;margin-bottom: 15px"><br>
 
-                    <!--<label class="mr-2" for="depTime" style="color: #777; font-size: 1rem; display: inline-block">Departure Time-->
-                        <!--: </label>-->
-                    <!--<input type="time" placeholder="hh:mm" required min="" id="depTime" class="form-control input"-->
+                    <!--<label class="mr-2" for="arrDate" style="color: #777; font-size: 1rem; display: inline-block">Arrival-->
+                        <!--Date: </label>-->
+                    <!--<input type="date" placeholder="yyyy-mm-dd" required min="1962-01-01" id="arrDate" class="form-control input"-->
                            <!--style="display: inline-block; width: auto;margin-bottom: 15px"><br>-->
-                    <label class="mr-2" for="arrTime" style="color: #777; font-size: 1rem; display: inline-block">Arrival Time
+
+                    <label class="mr-2" for="depTime" style="color: #777; font-size: 1rem; display: inline-block">Departure Time
                         : </label>
-                    <input type="time" placeholder="hh:mm" required min="" id="arrTime" class="form-control input"
+                    <input type="time" placeholder="hh:mm" required min="" id="depTime" class="form-control input"
                            style="display: inline-block; width: auto;margin-bottom: 15px"><br>
+                    <!--<label class="mr-2" for="arrTime" style="color: #777; font-size: 1rem; display: inline-block">Arrival Time-->
+                        <!--: </label>-->
+                    <!--<input type="time" placeholder="hh:mm" required min="" id="arrTime" class="form-control input"-->
+                           <!--style="display: inline-block; width: auto;margin-bottom: 15px"><br>-->
 
                     <!--<div class="form-check form-check-inline">-->
-                        <!--<label class="form-check-label">-->
-                            <!--<input class="form-check-input" type="radio" name="type" id="depRadio" value="dep"> Departing-->
-                        <!--</label>-->
+                    <!--<label class="form-check-label">-->
+                    <!--<input class="form-check-input" type="radio" name="type" id="depRadio" value="dep"> Departing-->
+                    <!--</label>-->
                     <!--</div>-->
                     <!--<div class="form-check form-check-inline">-->
-                        <!--<label class="form-check-label">-->
-                            <!--<input class="form-check-input" type="radio" name="type" id="arrRadio" value="arr"> Arriving-->
-                        <!--</label>-->
+                    <!--<label class="form-check-label">-->
+                    <!--<input class="form-check-input" type="radio" name="type" id="arrRadio" value="arr"> Arriving-->
+                    <!--</label>-->
                     <!--</div><br><br>-->
-                    <label class="mr-2" for="countersList" style="color: #777; font-size: 1rem; display: inline-block">Counters: </label>
-                    <select id="countersList" class="custom-select mb-2">
+                    <label class="mr-2" for="rowsList" style="color: #777; font-size: 1rem; display: inline-block">Rows: </label>
+                    <select id="rowsList" class="custom-select mb-2">
 
                     </select><br>
 
@@ -122,7 +122,7 @@
                     <label class="mr-2" for="flightCode" style="color: #777; font-size: 1rem; display: inline-block">Flight Code: </label>
                     <input id="editflightCode" required type="text" class="form-control input"
                            style="margin-bottom: 15px"><br>
-                    <label class="mr-2" for="airportsList" style="color: #777; font-size: 1rem; display: inline-block">Port of Departure: </label>
+                    <label class="mr-2" for="airportsList" style="color: #777; font-size: 1rem; display: inline-block">Port of Arrival: </label>
                     <select id="editAirportsList" class="custom-select mb-2">
 
                     </select><br>
@@ -161,37 +161,37 @@
                         <option>T-3</option>
                         <option>T-4</option>
                     </select><br>
-                    <!--<label class="mr-2" for="depDate" style="color: #777; font-size: 1rem; display: inline-block">Departure-->
-                        <!--Date: </label>-->
-                    <!--<input type="date" placeholder="yyyy-mm-dd" required min="1962-01-01" id="editDepDate" class="form-control input"-->
-                           <!--style="display: inline-block; width: auto;margin-bottom: 15px"><br>-->
-
-                    <label class="mr-2" for="arrDate" style="color: #777; font-size: 1rem; display: inline-block">Arrival
+                    <label class="mr-2" for="depDate" style="color: #777; font-size: 1rem; display: inline-block">Departure
                         Date: </label>
-                    <input type="date" placeholder="yyyy-mm-dd" required min="1962-01-01" id="editArrDate" class="form-control input"
+                    <input type="date" placeholder="yyyy-mm-dd" required min="1962-01-01" id="editDepDate" class="form-control input"
                            style="display: inline-block; width: auto;margin-bottom: 15px"><br>
 
-                    <!--<label class="mr-2" for="depTime" style="color: #777; font-size: 1rem; display: inline-block">Departure Time-->
-                        <!--: </label>-->
-                    <!--<input type="time" placeholder="hh:mm" required min="" id="editDepTime" class="form-control input"-->
+                    <!--<label class="mr-2" for="arrDate" style="color: #777; font-size: 1rem; display: inline-block">Arrival-->
+                        <!--Date: </label>-->
+                    <!--<input type="date" placeholder="yyyy-mm-dd" required min="1962-01-01" id="editArrDate" class="form-control input"-->
                            <!--style="display: inline-block; width: auto;margin-bottom: 15px"><br>-->
-                    <label class="mr-2" for="arrTime" style="color: #777; font-size: 1rem; display: inline-block">Arrival Time
+
+                    <label class="mr-2" for="depTime" style="color: #777; font-size: 1rem; display: inline-block">Departure Time
                         : </label>
-                    <input type="time" placeholder="hh:mm" required min="" id="editArrTime" class="form-control input"
+                    <input type="time" placeholder="hh:mm" required min="" id="editDepTime" class="form-control input"
                            style="display: inline-block; width: auto;margin-bottom: 15px"><br>
+                    <!--<label class="mr-2" for="arrTime" style="color: #777; font-size: 1rem; display: inline-block">Arrival Time-->
+                        <!--: </label>-->
+                    <!--<input type="time" placeholder="hh:mm" required min="" id="editArrTime" class="form-control input"-->
+                           <!--style="display: inline-block; width: auto;margin-bottom: 15px"><br>-->
 
                     <!--<div class="form-check form-check-inline">-->
-                    <!--<label class="form-check-label">-->
-                    <!--<input class="form-check-input" type="radio" name="type" id="editDepRadio" value="dep"> Departing-->
-                    <!--</label>-->
+                        <!--<label class="form-check-label">-->
+                            <!--<input class="form-check-input" type="radio" name="type" id="editDepRadio" value="dep"> Departing-->
+                        <!--</label>-->
                     <!--</div>-->
                     <!--<div class="form-check form-check-inline">-->
-                    <!--<label class="form-check-label">-->
-                    <!--<input class="form-check-input" type="radio" name="type" id="editArrRadio" value="arr"> Arriving-->
-                    <!--</label>-->
+                        <!--<label class="form-check-label">-->
+                            <!--<input class="form-check-input" type="radio" name="type" id="editArrRadio" value="arr"> Arriving-->
+                        <!--</label>-->
                     <!--</div><br><br>-->
-                    <label class="mr-2" for="countersList" style="color: #777; font-size: 1rem; display: inline-block">Counters: </label>
-                    <select id="editCountersList" class="custom-select mb-2">
+                    <label class="mr-2" for="rowsList" style="color: #777; font-size: 1rem; display: inline-block">Rows: </label>
+                    <select id="editRowsList" class="custom-select mb-2">
                         <option>T-1</option>
                         <option>T-2</option>
                         <option>T-3</option>
@@ -220,10 +220,10 @@
     <hr style="margin-top: 0">
     <div class="row" style="padding-top: 20px">
         <div class="col-auto">
-            <a class="btn btn-outline-success active" style="width: 170px; border-radius: 2rem; margin: 5px" href="/flights">Flights - Arrival
+            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/flights">Flights - Arrival
             </a>
             <br>
-            <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/flights_dept">Flights - Departure
+            <a class="btn btn-outline-success active" style="width: 170px; border-radius: 2rem; margin: 5px" href="/flights_dept">Flights - Departure
             </a>
             <br>
             <a class="btn btn-outline-success" style="width: 170px; border-radius: 2rem; margin: 5px" href="/airlines">
@@ -260,10 +260,10 @@
                 <div class="row text-center">
                     <div class="col-sm-3"></div>
                     <div class="col-sm-6">
-                        <h1 style="margin: 0" id="title">Arrival Flights</h1>
+                        <h1 style="margin: 0" id="title">Departure Flights</h1>
                     </div>
                     <div class="col-sm-3 mt-auto mb-auto">
-                        <button id="add_flight_btn" class=" btn btn-success" data-toggle="modal" data-target="#addArrFlightsModal"
+                        <button id="add_flight_btn" class=" btn btn-success" data-toggle="modal" data-target="#addDeptFlightsModal"
                                 style="padding: 5px 15px;font-size: 14px; border-radius: 0.25rem; cursor: pointer;">
                             Add Flight
                         </button>
@@ -277,11 +277,11 @@
                                 <!--<div class="col-1"><b>ID</b></div>-->
                                 <div class="col"><b>Flight</b></div>
                                 <div class="col"><b>Airlines</b></div>
-                                <div class="col-2"><b>Origin</b></div>
+                                <div class="col-2"><b>Destination</b></div>
                                 <div class="col-2"><b>Scheduled</b></div>
                                 <div class="col"><b>Terminal</b></div>
+                                <div class="col"><b>Row</b></div>
                                 <div class="col"><b>Gate</b></div>
-                                <div class="col"><b>Belt</b></div>
 
                                 <div class="col-1">
                                     <b>V/E/D</b>

@@ -1,68 +1,85 @@
 $(document).ready(function () {
-    console.log("WHAT");
+
     $("#add_flight_btn").click(function () {
-        console.log("LS");
+        // console.log("LS");
+
+        $.get('/api/airport/viewAll', function (airports) {
+
+            let airportslist = $('#airportsList');
+
+            for (let i = 0; i < airports.length; i++) {
+
+                if (airports[i].airport_code === "DEL") continue;
+
+                airportslist.append($('<option>', {
+                    value: airports[i].airport_code,
+                    text: airports[i].airport_code + " : " + airports[i].name + ", " + airports[i].city
+                }));
+
+            }
+
+        });
+
         $.get('/api/terminals/viewAll', function (terminals) {
 
             let terminalslist = $('#terminalsList');
 
-
-            console.log("HEY" + terminals[0].terminal_id);
             for (let i = 0; i < terminals.length; i++) {
+
+                if (terminals[i].terminal_id === "1A" || terminals[i].terminal_id === "1D") continue;
 
                 terminalslist.append($('<option>', {
                     value: terminals[i].terminal_id,
                     text: terminals[i].terminal_id
                 }))
 
-                console.log("HEY");
-
             }
 
-        })
+        });
 
         $.get('/api/airlines/viewAll', function (airlines) {
 
-            let airlineslist = $('#airlinessList');
+            let airlineslist = $('#airlinesList');
 
 
-           // console.log("HEY" + terminals[0].terminal_id);
+            // console.log("HEY" + terminals[0].terminal_id);
             for (let i = 0; i < airlines.length; i++) {
 
                 airlineslist.append($('<option>', {
                     value: airlines[i].airline_code,
-                    text: airlines[i].airline_code
+                    text: airlines[i].airline_code + " : " + airlines[i].name
                 }))
 
-                console.log("HEY");
+                // console.log("HEY - airlineslist");
 
             }
 
-        })
+        });
+
         $.get('/api/airplanes/viewAll', function (airplanes) {
 
-            let airplaneslist = $('#aircraftsList');
+            let airplaneslist = $('#aircraftList');
 
 
             // console.log("HEY" + terminals[0].terminal_id);
             for (let i = 0; i < airplanes.length; i++) {
 
                 airplaneslist.append($('<option>', {
-                    value: airplanes[i].name,
-                    text: airplanes[i].name
+                    value: airplanes[i].reg_no,
+                    text: airplanes[i].reg_no
                 }))
 
-                console.log("HEY 4");
+                // console.log("HEY 4");
 
             }
 
-        })
-        $('#terminalsList').change(function(){
+        });
 
-            var selected=$(this).val();
+        $('#terminalsList').change(function () {
 
+            var selected = $(this).val();
 
-            $.get('/api/runways/getAll',{terminal_id : $(this).val()}, function (runways) {
+            $.get('/api/runways/getAll', {terminal_id: selected}, function (runways) {
 
                 let runwayslist = $('#runwaysList');
                 $('#runwaysList').find('option').remove();
@@ -75,13 +92,13 @@ $(document).ready(function () {
                         text: runways[i].runway_id
                     }))
 
-                    console.log("HEY 4");
+                    // console.log("HEY 4");
 
                 }
 
             })
 
-            $.get('/api/gates/getAll',{terminal_id : $(this).val()}, function (gates) {
+            $.get('/api/gates/getAll', {terminal_id: selected}, function (gates) {
 
                 let gateslist = $('#gatesList');
                 $('#gatesList').find('option').remove();
@@ -95,44 +112,30 @@ $(document).ready(function () {
                         text: gates[i].gate_id
                     }))
 
-                    console.log("HEY 4");
+                    // console.log("HEY 4");
 
                 }
 
             })
 
-            $.get('/api/baggage_counters/getAll',{terminal_id : selected}, function (counters) {
-                $.get('api/check_in_rows/getAll',{terminal_id : selected},function (rows) {
-                    let counterslist = $('#tempList');
-                    $('#tempList').find('option').remove();
+            $.get('/api/baggage_counters/getAll', {terminal_id: selected}, function (counters) {
+                let counterslist = $('#countersList');
+                $('#countersList').find('option').remove();
 
-                    // console.log("HEY" + terminals[0].terminal_id);
-                    for(let j=0;j < rows.length; j++) {
-                        for (let i = 0; i < counters.length; i++) {
+                for (let i = 0; i < counters.length; i++) {
 
-                            counterslist.append($('<option>', {
-                                value: counters[i].counter_id + '/'+rows[j].row_id,
-                                text: counters[i].counter_id+'/'+rows[j].row_id
-                            }));
+                    counterslist.append($('<option>', {
+                        value: counters[i].counter_id,
+                        text: counters[i].counter_id
+                    }));
 
-                            console.log("HEY 4");
-
-                        }
-                    }
-
-                })
-
-
+                }
             })
-
 
 
         });
 
-
-
-
-        $.get('/api/runways/getAll',{terminal_id : "T-1"}, function (runways) {
+        $.get('/api/runways/getAll', {terminal_id: "1"}, function (runways) {
 
             let runwayslist = $('#runwaysList');
             $('#runwaysList').find('option').remove();
@@ -145,13 +148,13 @@ $(document).ready(function () {
                     text: runways[i].runway_id
                 }))
 
-                console.log("HEY 4");
+                // console.log("HEY 4");
 
             }
 
-        })
+        });
 
-        $.get('/api/gates/getAll',{terminal_id : "T-1"}, function (gates) {
+        $.get('/api/gates/getAll', {terminal_id: "1"}, function (gates) {
 
             let gateslist = $('#gatesList');
             $('#gatesList').find('option').remove();
@@ -165,65 +168,112 @@ $(document).ready(function () {
                     text: gates[i].gate_id
                 }))
 
-                console.log("HEY 4");
+                // console.log("HEY 4");
 
             }
 
+        });
+
+        $.get('/api/baggage_counters/getAll', {terminal_id: "1"}, function (counters) {
+            let counterslist = $('#countersList');
+            $('#countersList').find('option').remove();
+
+            for (let i = 0; i < counters.length; i++) {
+
+                counterslist.append($('<option>', {
+                    value: counters[i].counter_id,
+                    text: counters[i].counter_id
+                }));
+
+            }
         })
 
-        $.get('/api/baggage_counters/getAll',{terminal_id : "T-1"}, function (counters) {
-            $.get('api/check_in_rows/getAll', {terminal_id: "T-1"}, function (rows) {
-                let counterslist = $('#tempList');
-                $('#tempList').find('option').remove();
+    });
 
-                // console.log("HEY" + terminals[0].terminal_id);
-                for (let j = 0; j < rows.length; j++) {
-                    for (let i = 0; i < counters.length; i++) {
-
-                        counterslist.append($('<option>', {
-                            value: counters[i].counter_id + '/' + rows[j].row_id,
-                            text: counters[i].counter_id + '/' + rows[j].row_id
-                        }));
-
-                        console.log("HEY 4");
-
-                    }
-                }
-
-            })
-        })
-
-
-
-
-    })
-
-
-    $.get('/api/fligts/viewAll', function (flights) {
+    $.get('/api/flights/viewAll', function (flights) {
 
         let flightslist = $('#flights-list');
 
         for (let i = 0; i < flights.length; i++) {
 
+            let arr_time = flights[i].arr_time.toString();
+            let time = arr_time.substring(11,16);
+            let date = arr_time.substring(8,10) + "/" + arr_time.substring(5,7) + "/" + arr_time.substring(0,4);
+
             flightslist.append(`<li class="list-group-item">
-        <div class="row text-center">
-        <div class="col-1">${flights[i].flight_id}</div>
-        <div class="col">${flights[i].flight_code}</div>
-        <div class="col">${flights[i].airline_code}</div>
-        <div class="col">${flights[i].dept_time}</div>
-        <div class="col">${flights[i].arr_time}</div>
-        <div class="col">${flights[i].type}</div>
-        <div class="col-2">${flights[i].aircraft_no}</div>
-        <div class="col-2">${flights[i].terminal_id}</div>
-        <div class="col-1">${flights[i].runway_id}</div>
-        <div class="col-1">${flights[i].gate_id}</div>
-      <div class="col-1">
-        E/X
-        </div>
-        </div>
-        </li>`)
+                <div class="row text-center">
+                    <div class="col">${flights[i].flight_code}</div>
+                    <div class="col">${flights[i].airline_code}</div>
+                    <div class="col-2"><b>${flights[i].dept_from}</b></div>
+                    <div class="col-2">`+ time +`<br>` + date + `</div>
+                    <div class="col">${flights[i].terminal_id}</div>
+                    <div class="col">${flights[i].gate_id}</div>
+                    <div class="col"><b>${flights[i].counter_id}</b></div>
+                    <div class="col-1">E/X</div>
+                </div>
+            </li>`)
         }
-    })
+    });
+
+    $("#flightsSubmit").click(function () {
+        let flightID = $('#flightID').val();
+        let flightCode = $('#flightCode').val();
+        let dept_from = $('#airportsList').val();
+        let airlineCode = $('#airlinesList').val();
+        let aircraftNum = $('#aircraftList').val();
+        let terminal = $('#terminalsList').val();
+        let runway = $('#runwaysList').val();
+        let gate = $('#gatesList').val();
+        // let depDate = $('#depDate').val();
+        let arrDate = $('#arrDate').val();
+        // let depTime = $('#depTime').val();
+        let arrTime = $('#arrTime').val();
+        let counter = $('#countersList').val();
+
+        if (!flightCode || !flightID || !dept_from || !airlineCode || !aircraftNum|| !terminal
+            || !runway || !gate /*|| !depDate*/ || !arrDate /*|| !depTime*/ || !arrTime || !counter) {
+
+            $('#addFlightsError').text("Please Enter All The Details!");
+
+        } else {
+
+            // if(depDate < '2013-01-01') console.log("Please enter valid departure date!");
+            if(arrDate > '2023-12-31') console.log("Please enter valid arrival date!");
+
+            // let dept_time = depDate + " " + depTime;
+            let dept_time = "2012-12-31 23:59";
+            let arr_time = arrDate + " " + arrTime;
+
+            $.ajax({
+                url: '/api/flights/add',
+
+                data: {
+                    flightID: flightID,
+                    flightCode: flightCode,
+                    airlineCode: airlineCode,
+                    dept_time: dept_time,
+                    arr_time: arr_time,
+                    aircraft_no: aircraftNum,
+                    terminal_id: terminal,
+                    runway_id: runway,
+                    gate_id: gate,
+                    dept_from: dept_from,
+                    counter_id: counter
+                },
+                method: 'POST'
+            }).done(function (msg) {
+                if (msg === "Arrival flight added") {
+
+                    $('#addArrFlightsModal').modal('hide');
+                    window.location.reload();
+                }
+                else {
+                    console.log("could not add the flight right now")
+                }
+            })
+
+        }
+    });
 
     // $.get('/api/v1/batches/' + batchId, function (batch) {
     //   $('#title').text("Lectures for " + batch.data.name + " Batch");
@@ -338,7 +388,6 @@ $(document).ready(function () {
     //   })
     //
     // })
-
 
 
 })

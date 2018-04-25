@@ -11,11 +11,11 @@ db.query(queries.airport.createTable).then((data) => {
             db.query(queries.baggage_counters.createTable).then((data) => {
               db.query(queries.gates.createTable).then((data) => {
                 db.query(queries.flights.createTable).then((data) => {
-                  // db.query(queries.landing_flights.createTable).then((data) => {
-                  //   db.query(queries.takeoff_flights.createTable).then((data) => {
-                  //
-                  //   });
-                  // });
+                  db.query(queries.landing_flights.createTable).then((data) => {
+                    db.query(queries.takeoff_flights.createTable).then((data) => {
+
+                    });
+                  });
                 });
               });
             });

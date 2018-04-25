@@ -9,6 +9,7 @@ app.use('/api', require('./routes/index'))
 
 app.use(express.static(__dirname + '/public-html'))
 app.use('/flights', express.static(__dirname + '/public-html/admin/flights.html'))
+app.use('/flights_dept', express.static(__dirname + '/public-html/admin/flights_dept.html'))
 app.use('/airlines', express.static(__dirname + '/public-html/admin/airlines.html'))
 app.use('/airplanes', express.static(__dirname + '/public-html/admin/airplanes.html'))
 app.use('/airports', express.static(__dirname + '/public-html/admin/airports.html'))

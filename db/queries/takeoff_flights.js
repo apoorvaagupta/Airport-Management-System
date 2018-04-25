@@ -10,16 +10,16 @@ const createTable = `
     CONSTRAINT flight_validity      FOREIGN KEY (flight_code,flight_id)  REFERENCES flights(flight_code,flight_id) ON DELETE CASCADE,
     CONSTRAINT flight_arr_airport   FOREIGN KEY (arr_at)             REFERENCES airport(airport_code)              ON DELETE CASCADE,
     CONSTRAINT flight_terminal      FOREIGN KEY (terminal_id)        REFERENCES terminals(terminal_id)             ON DELETE RESTRICT,
-    CONSTRAINT flight_checkInRow    FOREIGN KEY (terminal_id,row_id) REFERENCES check_in_rows(terminal_id,row_id)  ON DELETE RESTRICT,
+    CONSTRAINT flight_checkInRow    FOREIGN KEY (terminal_id,row_id) REFERENCES check_in_rows(terminal_id,row_id)  ON DELETE RESTRICT
   );
-`
+`;
 
 // noinspection JSAnnotator
 const dropTable = `
   DROP TABLE IF EXISTS takeoff_flights;
-`
+`;
 
 module.exports = {
     createTable,
     dropTable
-}
+};
